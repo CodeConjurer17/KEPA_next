@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import Items from "../../components/layout/Items";
@@ -17,7 +18,9 @@ export default async function Shop() {
   return (
     <>
       <Header/>
-      <Items products={products} />
+      <Suspense fallback={null}>
+        <Items products={products} />
+      </Suspense>
       <Divider/>
       <Faq />
       <Footer/>
