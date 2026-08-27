@@ -1,4 +1,4 @@
-name: Deploy to server 
+name: Deploy to server
 
 on:
   push:
@@ -6,19 +6,14 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Deploy over SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          script: |
-            cd ~/KEPA_next
-            git pull origin main
-            npm ci
-            npx prisma generate
-            npx prisma migrate deploy
-            npm run build
-            pm2 restart kepa-next || pm2 start npm --name "kepa-next" -- start
+      - name: Deploy
+        run: |
+          cd ~/KEPA_next
+          git pull origin main
+          npm ci
+          npx prisma generate
+          npx prisma migrate deploy
+          npm run build
+          pm2 restart kepa-next || pm2 start npm --name "kepa-next" -- start
