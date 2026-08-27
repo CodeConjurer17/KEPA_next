@@ -1,47 +1,19 @@
-name: Deploy to server 
+name: Deploy to server
 
 on:
   push:
     branches: [main]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install and build
-        run: |
-          npm ci
-          npx prisma generate
-          npm run build
-          npm prune --omit=dev
-
-      - name: Package artifact
-        run: |
-          tar -czf app-build.tar.gz .next public package.json package-lock.json prisma node_modules next.config.ts prisma.config.ts
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: app-build
-          path: app-build.tar.gz
-
   deploy:
-    needs: build
     runs-on: self-hosted
     steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: app-build
-
-      - name: Deploy on server
+      - name: Deploy
         run: |
-          mkdir -p ~/KEPA_next
-          tar -xzf app-build.tar.gz -C ~/KEPA_next
           cd ~/KEPA_next
+          git pull origin main
+          npm ci
+          npx prisma generate
           npx prisma migrate deploy
+          npm run build
           pm2 restart kepa-next || pm2 start npm --name "kepa-next" -- start
