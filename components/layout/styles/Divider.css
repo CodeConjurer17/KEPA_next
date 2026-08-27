@@ -1,0 +1,7 @@
+.divider {
+  height: 40px;
+  background: var(--colour-3);
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 -6px 16px rgba(0,0,0,0.45), 0 6px 16px rgba(0,0,0,0.45);
+}

@@ -1,0 +1,114 @@
+.catFlow-section {
+  padding: 48px 32px 8px;
+  background: var(--colour-4);
+}
+
+.catFlow-header {
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto 28px;
+}
+
+.catFlow-eyebrow {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--colour-accent-light);
+  color: var(--colour-accent-dark);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.catFlow-header h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  margin: 0;
+  color: var(--text-1);
+}
+
+.catFlow-track {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: none;
+  padding: 4px 8px 12px;
+  justify-content: center;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 40px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 40px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+}
+
+.catFlow-track::-webkit-scrollbar {
+  display: none;
+}
+
+.catFlow-tile {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.catFlow-circle {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.catFlow-tile:hover .catFlow-circle {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: var(--shadow-md);
+}
+
+.catFlow-circle.tint-sage {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--colour-1) 55%, var(--colour-4)) 0%,
+    var(--colour-1) 100%);
+}
+
+.catFlow-circle.tint-accent {
+  background: linear-gradient(135deg, var(--colour-accent-light) 0%, var(--colour-accent) 100%);
+}
+
+.catFlow-circle.tint-neutral {
+  background: linear-gradient(135deg, var(--colour-3) 0%, var(--colour-2) 100%);
+}
+
+.catFlow-label {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--text-1);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .catFlow-section {
+    padding: 36px 20px 8px;
+  }
+  .catFlow-circle {
+    width: 76px;
+    height: 76px;
+  }
+}

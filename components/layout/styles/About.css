@@ -1,0 +1,109 @@
+.about-full {
+  width: 100%;
+  min-height: 70vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.about-full__overlay {
+  min-height: 70vh;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.55) 55%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  display: flex;
+  align-items: center;
+  padding: 72px 0;
+}
+
+.about-full__inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.about-full__content {
+  justify-self: end;
+  max-width: 520px;
+  text-align: left;
+}
+
+.about-full__title {
+  font-family: var(--font-display);
+  color: var(--text-2);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-black);
+  margin: 0 0 14px;
+  line-height: 1.1;
+}
+
+.about-full__text {
+  font-family: var(--font-body);
+  color: var(--colour-trans-1);
+  font-size: var(--fs-md);
+  line-height: 1.75;
+  margin: 0 0 12px;
+}
+
+.about-full__actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.about-full__btn {
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--colour-2);
+  color: var(--text-1);
+  font-family: var(--font-body);
+  font-weight: var(--fw-black);
+  text-decoration: none;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.about-full__btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.about-full__link {
+  color: var(--colour-trans-1);
+  font-family: var(--font-body);
+  font-weight: var(--fw-black);
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.about-full__link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Mobile: stack and center */
+@media (max-width: 768px) {
+  .about-full__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .about-full__spacer {
+    display: none;
+  }
+
+  .about-full__content {
+    justify-self: start;
+    max-width: 640px;
+  }
+
+  .about-full__overlay {
+    background: var(--colour-trans-2);
+    padding: 56px 0;
+  }
+}

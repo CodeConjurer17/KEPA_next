@@ -1,0 +1,244 @@
+.footer {
+  background: linear-gradient(160deg, #d0d0d0 0%, #c2c2c2 100%);
+  box-shadow: 0 -4px 12px rgba(28, 26, 20, 0.6);
+  color: var(--text-1);
+  font-family: var(--font-body);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle background texture rings — rgb(76,96,83) is exactly --colour-1,
+   now a real token reference instead of a coincidentally-matching hex */
+.footer::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 40px solid color-mix(in srgb, var(--colour-1) 6%, transparent);
+  pointer-events: none;
+}
+
+.footer__wrap {
+  padding: 48px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Brand hero — centered, large */
+.footer__brand {
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+.footer__logo {
+  /* was a separate Playfair Display import — now uses the site's
+     existing display font (Fraunces) instead of loading a second one */
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-regular);
+  margin: 0 0 6px;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+}
+
+.footer__tagline {
+  margin: 0;
+  color: var(--colour-1);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.06em;
+}
+
+/* Three column grid */
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .footer__grid {
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+  }
+}
+
+.footer__heading {
+  margin: 0 0 14px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-black);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--colour-1);
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer__links a {
+  color: var(--text-3);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.footer__links a:hover {
+  color: var(--colour-1);
+  transform: translateX(3px);
+}
+
+.footer__socials {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer__contact {
+  margin: 0;
+}
+
+.footer__contact a {
+  color: var(--text-3);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.footer__contact a:hover {
+  color: var(--colour-1);
+  border-bottom-color: var(--colour-1);
+}
+
+.footer__social {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-3);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer__social:hover {
+  color: var(--colour-1);
+  transform: translateX(3px);
+}
+
+.footer__socialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--colour-2);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+/* Decorative divider */
+.footer__divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.15), transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__divider-leaf {
+  position: absolute;
+  background: #c8c8c8;
+  color: var(--colour-1);
+  padding: 0 14px;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.2em;
+}
+
+/* Bottom bar */
+.footer__bottom {
+  display: grid;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  color: var(--text-3);
+  justify-items: center;
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+.footer__credit,
+.footer__copy {
+  margin: 0;
+}
+
+.footer__credit a {
+  color: var(--text-3);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.footer__credit a:hover {
+  color: var(--colour-1);
+  border-bottom-color: var(--colour-1);
+}
+
+.footer__toTop {
+  color: var(--colour-1);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
+  transition: transform var(--transition-fast);
+  display: inline-block;
+}
+
+.footer__toTop:hover {
+  transform: translateY(-2px);
+}
+
+@media (min-width: 900px) {
+  .footer__bottom {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    text-align: left;
+    grid-template-areas: "credit copy top";
+  }
+  .footer__credit { grid-area: credit; justify-self: start; }
+  .footer__copy   { grid-area: copy;   justify-self: center; text-align: center; }
+  .footer__toTop  { grid-area: top;    justify-self: end; }
+}
+
+.footer a:focus-visible {
+  outline: 2px solid var(--colour-1);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.footer__watermark {
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  filter: brightness(0) opacity(0.07);
+  pointer-events: none;
+  user-select: none;
+}

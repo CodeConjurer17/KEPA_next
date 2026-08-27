@@ -1,0 +1,163 @@
+.flow-section {
+  position: relative;
+  z-index: 2;
+  background: var(--colour-3);
+  padding: 56px 32px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.flow-header {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+
+.flow-header h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  margin: 0 0 8px;
+  color: var(--text-1);
+}
+
+.flow-header p {
+  font-size: var(--fs-base);
+  color: var(--text-3);
+  margin: 0;
+}
+
+/* ---- Continuous auto-scrolling track ---- */
+.flow-track {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: none;
+  /* fade the edges so the loop point isn't a hard cut */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 40px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 40px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+}
+
+.flow-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---- Minimal, borderless card — image is the star ---- */
+.flow-card {
+  flex: 0 0 220px;
+  text-decoration: none;
+}
+
+.flow-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--colour-4);
+}
+
+.flow-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-base);
+}
+
+.flow-card:hover .flow-img-wrap img {
+  transform: scale(1.05);
+}
+
+.flow-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: var(--colour-accent-dark);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.flow-info {
+  padding: 12px 2px 0;
+}
+
+.flow-category {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 3px;
+}
+
+.flow-name {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--text-1);
+  margin: 0 0 3px;
+  line-height: 1.3;
+}
+
+.flow-price {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--colour-accent-dark);
+  margin: 0;
+}
+
+/* ---- Footer link ---- */
+.flow-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.flow-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  background: var(--colour-1);
+  color: var(--colour-2);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.flow-footer-link:hover {
+  background: var(--colour-1-dark);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .flow-section {
+    padding: 40px 20px;
+  }
+  .flow-card {
+    flex-basis: 160px;
+  }
+}

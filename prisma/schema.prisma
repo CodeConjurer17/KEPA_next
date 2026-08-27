@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  price       Float
+  oldPrice    Float?
+  sale        Boolean  @default(false)
+
+  type        String   // "uhani", "broške", "voščilnice", "namizni okraski", ...
+  occasions   String[] // ["rojstni dan", "božič"] — a product can fit multiple
+
+  color       String?
+  size        String?
+  description String?  @db.Text // supports \n newlines
+
+  images      String[] // ordered list of image paths, first = cover image
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([type])
+}

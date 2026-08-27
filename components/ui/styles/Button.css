@@ -1,0 +1,77 @@
+.kepaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.kepaBtn:hover {
+  transform: translateY(-2px);
+}
+
+.kepaBtn:active {
+  transform: translateY(0);
+}
+
+.kepaBtn__icon {
+  display: inline-flex;
+  font-size: 1.1em;
+}
+
+/* ---- sizes ---- */
+.kepaBtn--md {
+  padding: 13px 24px;
+  font-size: var(--fs-base);
+}
+
+.kepaBtn--sm {
+  padding: 8px 16px;
+  font-size: var(--fs-sm);
+}
+
+/* ---- variants ---- */
+.kepaBtn--primary {
+  background: var(--colour-2);
+  color: var(--text-1);
+  box-shadow: var(--shadow-sm);
+}
+.kepaBtn--primary:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.kepaBtn--accent {
+  background: var(--colour-accent);
+  color: var(--colour-2);
+  box-shadow: var(--shadow-sm);
+}
+.kepaBtn--accent:hover {
+  background: var(--colour-accent-dark);
+}
+
+.kepaBtn--outline {
+  background: transparent;
+  color: var(--colour-1);
+  border: 1.5px solid var(--colour-1-light);
+}
+.kepaBtn--outline:hover {
+  background: var(--colour-1);
+  color: var(--colour-2);
+  border-color: var(--colour-1);
+}
+
+.kepaBtn--ghost {
+  background: var(--colour-4);
+  color: var(--text-1);
+}
+.kepaBtn--ghost:hover {
+  background: var(--colour-3);
+}
