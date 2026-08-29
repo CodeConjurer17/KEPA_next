@@ -3,9 +3,9 @@ import { readdir, stat } from "fs/promises";
 import path from "path";
 
 const TARGET_DIR = path.join(process.cwd(), "public", "assets");
-const MAX_WIDTH = 1600;
-const JPEG_QUALITY = 80;
-const PNG_QUALITY = 80;
+const MAX_WIDTH = 1200;
+const JPEG_QUALITY = 72;
+const PNG_QUALITY = 72;
 
 async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
