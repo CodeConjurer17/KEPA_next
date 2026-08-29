@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="footer__socials">
               <a
                 className="footer__social"
-                href="https://www.facebook.com/TVAŠA-STRAN"
+                href="https://www.facebook.com/profile.php?id=61576500803275&locale=sl_SI"
                 target="_blank"
                 rel="noreferrer"
               >

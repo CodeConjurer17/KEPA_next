@@ -36,7 +36,7 @@ export default function Header() {
     const handleScroll = () => {
       const currentY = window.scrollY;
       const scrolledDown = currentY > lastScrollY.current;
-      const pastThreshold = currentY > 120; // don't hide right at the top of the page
+      const pastThreshold = currentY > 120;
 
       setHidden(scrolledDown && pastThreshold && !open);
       lastScrollY.current = currentY;
@@ -93,7 +93,7 @@ export default function Header() {
               </IconButton>
               <IconButton
                 as="a"
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61576500803275&locale=sl_SI"
                 label="Facebook"
                 className="navbar__social"
               >
