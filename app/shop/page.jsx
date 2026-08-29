@@ -6,6 +6,8 @@ import Divider from "../../components/layout/Divider";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 
+export const revalidate = 60;
+
 export default async function Shop() {
   const products = await prisma.product.findMany({
     orderBy: { createdAt: "desc" },

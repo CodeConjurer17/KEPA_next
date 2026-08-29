@@ -4,6 +4,7 @@ import ItemDetail from "../../../components/layout/ItemDetail";
 import Header from "../../../components/layout/Header";
 import Footer from "../../../components/layout/Footer";
 
+export const revalidate = 60;
 // Pre-render all product pages at build time — fast first load,
 // no server round-trip needed when a card is clicked.
 export async function generateStaticParams() {
