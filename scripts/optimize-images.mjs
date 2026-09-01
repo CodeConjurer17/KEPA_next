@@ -1,11 +1,10 @@
 import sharp from "sharp";
-import { readdir, stat } from "fs/promises";
+import { readdir, stat, unlink } from "fs/promises";
 import path from "path";
 
 const TARGET_DIR = path.join(process.cwd(), "public", "assets");
 const MAX_WIDTH = 1200;
-const JPEG_QUALITY = 72;
-const PNG_QUALITY = 72;
+const WEBP_QUALITY = 75;
 
 async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -14,27 +13,26 @@ async function walk(dir) {
     if (entry.isDirectory()) {
       await walk(fullPath);
     } else if (/\.(jpe?g|png)$/i.test(entry.name)) {
-      await optimize(fullPath);
+      await convert(fullPath);
     }
   }
 }
 
-async function optimize(filePath) {
+async function convert(filePath) {
   const before = (await stat(filePath)).size;
-  const buffer = await sharp(filePath)
-    .resize({ width: MAX_WIDTH, withoutEnlargement: true })
-    .jpeg({ quality: JPEG_QUALITY, mozjpeg: true })
-    .png({ quality: PNG_QUALITY })
-    .toBuffer();
+  const webpPath = filePath.replace(/\.(jpe?g|png)$/i, ".webp");
 
-  // only overwrite if it's actually smaller
-  if (buffer.length < before) {
-    await sharp(buffer).toFile(filePath + ".tmp");
-    await import("fs/promises").then(({ rename }) => rename(filePath + ".tmp", filePath));
-    console.log(`${path.relative(process.cwd(), filePath)}: ${(before / 1024).toFixed(0)}KB -> ${(buffer.length / 1024).toFixed(0)}KB`);
-  } else {
-    console.log(`${path.relative(process.cwd(), filePath)}: already optimal, skipped`);
-  }
+  await sharp(filePath)
+    .resize({ width: MAX_WIDTH, withoutEnlargement: true })
+    .webp({ quality: WEBP_QUALITY })
+    .toFile(webpPath);
+
+  const after = (await stat(webpPath)).size;
+  console.log(
+    `${path.relative(process.cwd(), filePath)} (${(before / 1024).toFixed(0)}KB) -> ${path.relative(process.cwd(), webpPath)} (${(after / 1024).toFixed(0)}KB)`
+  );
+
+  await unlink(filePath); // remove the old jpg/png, webp replaces it
 }
 
 walk(TARGET_DIR).then(() => console.log("Done."));
