@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <main
       className="not-found"
-      style={{ backgroundImage: `url(/assets/green.jpg)` }}
+      style={{ backgroundImage: `url(/assets/green.webp)` }}
     >
       <div className="not-found__overlay">
         <div className="not-found__card">

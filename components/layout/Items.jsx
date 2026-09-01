@@ -243,7 +243,7 @@ export default function Items({ products }) {
 
       <div
         className="galleryHeader"
-        style={{ backgroundImage: `url(/assets/ozadje_dark.jpg)` }}
+        style={{ backgroundImage: `url(/assets/ozadje_dark.webp)` }}
       >
         <div className="galleryHeader__overlay">
           <div className="container">
@@ -341,7 +341,7 @@ export default function Items({ products }) {
                       <option value="featured">Privzeto</option>
                       <option value="price-asc">Cena: nizka → visoka</option>
                       <option value="price-desc">Cena: visoka → nizka</option>
-                      <option value="name">Ime A–Ž</option>
+                      <option value="name">Ime A-Ž</option>
                     </select>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 @source not "./app/shop/[id]/**/*";
 .itemDetail {
   padding: 96px 16px;
-  background: url('/assets/green.jpg') center center / cover no-repeat;
+  background: url('/assets/green.webp') center center / cover no-repeat;
   position: relative;
 }
 
