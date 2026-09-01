@@ -55,7 +55,7 @@ export default function Header() {
       <div className="navbar__inner">
         <Link href="/" className="navbar__brand" onClick={() => setOpen(false)}>
           <img
-            src="/assets/icon/Barva2.png"
+            src="/assets/icon/Barva2.webp"
             alt="Ustvarjalnica KEPA"
             className="navbar__logo"
           />

@@ -6,7 +6,7 @@ export default function About() {
     <section
       id="about"
       className="about-full"
-      style={{ backgroundImage: `url(/assets/ozadje_about.jpg)` }}
+      style={{ backgroundImage: `url(/assets/ozadje_about.webp)` }}
       aria-label="O meni"
     >
       <div className="about-full__overlay">

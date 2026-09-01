@@ -6,7 +6,7 @@ export default function CTA() {
   return (
     <section
       className="cta"
-      style={{ backgroundImage: `url(/assets/ozadje_dark.jpg)` }}
+      style={{ backgroundImage: `url(/assets/ozadje_dark.webp)` }}
       aria-label="Predstavitev"
     >
       <div className="cta__overlay">

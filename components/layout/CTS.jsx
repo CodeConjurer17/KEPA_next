@@ -4,7 +4,7 @@ export default function CTS() {
   return (
     <section
       className="cta"
-      style={{ backgroundImage: `url(/assets/ozadje_dark.jpg)` }}
+      style={{ backgroundImage: `url(/assets/ozadje_dark.webp)` }}
       aria-label="Call to action"
     >
       <div className="cta__overlay">

@@ -95,7 +95,7 @@ export default function Footer() {
       </div>
       <img
         className="footer__watermark"
-        src="/assets/icon/BeloTransparent.png"
+        src="/assets/icon/BeloTransparent.webp"
         alt=""
         aria-hidden="true"
       />

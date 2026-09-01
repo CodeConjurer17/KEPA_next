@@ -79,7 +79,7 @@ export default function Faq() {
           <div className="col-12 col-lg-5">
             <div className="faq-visual">
               <div className="faq-circle" aria-hidden="true">
-                <img className="faq-circle-img" src="/assets/question2.jpg" alt="" />
+                <img className="faq-circle-img" src="/assets/question2.webp" alt="" />
                 <div className="faq-circle-overlay">
                   <span className="faq-circle-q">?</span>
                 </div>
