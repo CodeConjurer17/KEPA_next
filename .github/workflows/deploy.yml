@@ -17,4 +17,3 @@ jobs:
           npx prisma migrate deploy
           npm run build
           pm2 restart KEPA-next || pm2 start npm --name "KEPA-next" -- start
-          
