@@ -7,23 +7,51 @@ datasource db {
 }
 
 model Product {
-  id          String   @id @default(cuid())
-  title       String
-  price       Float
-  oldPrice    Float?
-  sale        Boolean  @default(false)
+  id             String   @id @default(cuid())
+  title          String
+  description    String?  @db.Text // supports \n newlines
+  price          Float
+  oldPrice       Float?
+  sale           Boolean  @default(false)
 
-  type        String   // "uhani", "broške", "voščilnice", "namizni okraski", ...
-  occasions   String[] // ["rojstni dan", "božič"] — a product can fit multiple
+  stock          Int      @default(1)     // number of items available, 0 = sold out
+  madeToOrder    Boolean  @default(false) // if true, stock is ignored
+  personalizable Boolean  @default(false) // customer can request a name on the item
 
-  color       String?
-  size        String?
-  description String?  @db.Text // supports \n newlines
+  type           String   // "Svečniki", "Okraski za smrečico", ...
+  occasions      String[] // ["Božič"]
+  woods          String[] // ["Bukev", "Hrast"]
+  colors         String[] // ["Naravna", "Rdeča"]
+  candleType     String?  // only for "Svečniki"
 
-  images      String[] // ordered list of image paths, first = cover image
+  heightCm       Float?
+  widthCm        Float?
+  depthCm        Float?
+  diameterCm     Float?   // for round items, instead of width/depth
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  images         ProductImage[]
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   @@index([type])
+  @@index([stock])
+}
+
+model ProductImage {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  position   Int      @default(0) // 0 = cover image
+  alt        String?
+
+  path       String   // "/uploads/products/<productId>/<id>.webp" (large, max ~1600 px)
+  thumbPath  String   // "/uploads/products/<productId>/<id>-thumb.webp" (~400 px)
+  width      Int?
+  height     Int?
+
+  createdAt  DateTime @default(now())
+
+  @@index([productId, position])
 }
